@@ -1,0 +1,139 @@
+// styles/_layout.scss
+// Стили для базовой структуры и layout-компонентов сайта: контейнеры, секции, отступы, базовые grid-решения
+
+// 1. Контейнеры
+.section__container,
+.grid-container {
+  max-width: var(--container-max-width, 1312px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding, 16px);
+  padding-right: var(--container-padding, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// 2. Секции
+.section {
+  padding: 48px 0;
+  position: relative;
+
+  @media (max-width: 767px) {
+    padding: 32px 0;
+  }
+}
+
+// 3. Заголовки секций
+.section__title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5em;
+  line-height: 1.1;
+  color: var(--color-text, #222);
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+}
+
+.section__subtitle {
+  font-size: 1.15rem;
+  color: #888;
+  margin-bottom: 2em;
+  font-weight: 400;
+}
+
+// 4. Разделители (если нужны)
+.section__divider {
+  width: 48px;
+  height: 4px;
+  background: var(--color-primary, #1976d2);
+  border-radius: 2px;
+  margin: 24px 0;
+}
+
+// 5. Сетка для layout (например, две колонки)
+.layout-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter-desktop, 32px);
+
+  @media (max-width: 1023px) {
+    gap: 24px;
+  }
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.layout-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+// 6. Базовые отступы для внутренних блоков
+.layout-block {
+  margin-bottom: 2.5em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 7. Стили для вспомогательных layout-элементов
+.layout-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.layout-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 8. Адаптивные отступы для layout-компонентов
+@media (max-width: 1023px) {
+  .section {
+    padding: 40px 0;
+  }
+  .section__container,
+  .grid-container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 24px 0;
+  }
+  .section__title {
+    font-size: 1.2rem;
+  }
+  .section__container,
+  .grid-container {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+/*
+  Краткая навигация:
+  - .section__container, .grid-container — основные контейнеры для контента
+  - .section — базовый отступ для секций
+  - .section__title, .section__subtitle — стили для заголовков
+  - .layout-row, .layout-col — простые layout-сетки (например, две колонки)
+  - .layout-center, .layout-right, .layout-space-between — выравнивание flex
+  - .layout-block — базовые отступы между блоками
+  - Медиа-запросы для адаптивности
+  Для сложной сетки используйте partial _grid.scss
+*/

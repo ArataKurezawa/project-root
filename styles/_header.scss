@@ -1,0 +1,252 @@
+// styles/_header.scss
+// Стили для шапки сайта
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--color-bg, #fff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 16px 0;
+  transition: box-shadow 0.3s ease;
+
+  // Контейнер для содержимого шапки
+  .header__container {
+    max-width: var(--container-max-width, 1312px);
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 16px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // Логотип
+  .header__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text, #222);
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: color 0.2s;
+
+    img {
+      max-height: 32px;
+      margin-right: 8px;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary, #1976d2);
+      text-decoration: none;
+    }
+  }
+
+  // Навигация
+  .header__nav {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      display: none; // Скрываем на мобильных (будет в бургер-меню)
+    }
+  }
+
+  // Список навигации
+  .header__nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 24px;
+  }
+
+  // Пункт навигации
+  .header__nav-item {
+    margin: 0;
+  }
+
+  // Ссылка навигации
+  .header__nav-link {
+    color: var(--color-text, #222);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary, #1976d2);
+    }
+
+    // Активная ссылка
+    &.active {
+      color: var(--color-primary, #1976d2);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--color-primary, #1976d2);
+      }
+    }
+  }
+
+  // Бургер-меню (для мобильных)
+  .header__burger {
+    display: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: relative;
+
+    @media (max-width: 767px) {
+      display: block;
+    }
+  }
+
+  // Иконка бургера
+  .burger {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: var(--color-text, #222);
+      border-radius: 2px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+      }
+
+      &:nth-child(2), &:nth-child(3) {
+        top: 8px;
+      }
+
+      &:nth-child(4) {
+        top: 16px;
+      }
+    }
+
+    // Активное состояние (когда меню открыто)
+    &.burger--active {
+      span {
+        &:nth-child(1) {
+          top: 8px;
+          width: 0%;
+          left: 50%;
+        }
+
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+
+        &:nth-child(4) {
+          top: 8px;
+          width: 0%;
+          left: 50%;
+        }
+      }
+    }
+  }
+
+  // Мобильное меню
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; // Высота шапки
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg, #fff);
+    padding: 24px 16px;
+    overflow-y: auto;
+    z-index: 99;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    // Открытое состояние
+    &.mobile-menu--open {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  // Список мобильной навигации
+  .mobile-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Пункт мобильной навигации
+  .mobile-menu__item {
+    margin-bottom: 16px;
+  }
+
+  // Ссылка мобильной навигации
+  .mobile-menu__link {
+    color: var(--color-text, #222);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary, #1976d2);
+    }
+
+    // Активная ссылка
+    &.active {
+      color: var(--color-primary, #1976d2);
+    }
+  }
+
+  // Адаптивность
+  @media (max-width: 480px) {
+    padding: 12px 0;
+
+    .header__logo {
+      font-size: 1.1rem;
+
+      img {
+        max-height: 28px;
+      }
+    }
+  }
+}
+
+/*
+  Краткая навигация:
+  - .header — основной контейнер шапки (sticky)
+  - .header__container — flex-обёртка, выравнивание контента
+  - .header__logo — логотип/название сайта
+  - .header__nav, .header__nav-list, .header__nav-item, .header__nav-link — навигация
+  - .burger — иконка бургер-меню для мобильных
+  - .mobile-menu — мобильное меню (скрыто по умолчанию)
+  - Медиа-запросы для мобильных устройств
+  Для расширения — добавьте нужные элементы и классы в разметке header.php
+*/

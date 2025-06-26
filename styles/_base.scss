@@ -1,0 +1,194 @@
+// styles/_base.scss
+// Базовые стили для проекта: сброс, базовые переменные, общие классы
+
+// 1. Сброс стилей (reset/normalize)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// 2. Базовые переменные (цвета, типографика, размеры)
+:root {
+  // Цвета
+  --color-bg: #fff;
+  --color-text: #222;
+  --color-primary: #1976d2;
+  --color-secondary: #e3e7ed;
+  --color-error: #e53935;
+  --color-success: #43a047;
+
+  // Типографика
+  --font-main: 'Inter', 'Arial', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
+  // Контейнеры и сетка
+  --container-max-width: 1312px;
+  --container-padding: 16px;
+  --gutter-desktop: 32px;
+  --gutter-mobile: 24px;
+}
+
+// 3. Базовые стили для body и html
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 4. Ссылки
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+  &:hover,
+  &:focus {
+    color: darken(var(--color-primary), 10%);
+    text-decoration: underline;
+  }
+}
+
+// 5. Картинки
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 6. Списки
+ul, ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.25em;
+}
+
+// 7. Таблицы
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+th, td {
+  border: 1px solid var(--color-secondary);
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+// 8. Формы (базово)
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+// 9. Класс для блокировки прокрутки body (для бургер-меню)
+.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+}
+
+// 10. Класс visually-hidden (для доступности)
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  border: 0 !important;
+}
+
+// 11. Класс для контейнера
+.section__container,
+.grid-container {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+// 12. Базовые отступы для секций
+.section {
+  padding: 48px 0;
+  @media (max-width: 767px) {
+    padding: 32px 0;
+  }
+}
+
+// 13. Стили для заголовков
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+  color: var(--color-text);
+}
+
+// 14. Базовые стили для параграфов
+p {
+  margin-bottom: 1em;
+}
+
+// 15. Класс для выделения кода
+code, pre {
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  background: #f6f8fa;
+  color: #d6336c;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-size: 0.95em;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+// 16. Класс для выделения ошибок
+.error {
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+// 17. Класс для успешных сообщений
+.success {
+  color: var(--color-success);
+  font-weight: 500;
+}
+
+/*
+  Краткая навигация:
+  - Сброс и normalize
+  - Переменные CSS (цвета, типографика, сетка)
+  - Базовые стили для html, body, ссылок, картинок, списков, таблиц, форм
+  - Классы для доступности и контейнеров
+  - Стили для секций, заголовков, параграфов, кода
+  - Классы для ошибок и успеха
+  Для расширения используйте partials: _typography.scss, _grid.scss, _ui.scss и т.д.
+*/

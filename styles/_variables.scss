@@ -1,0 +1,88 @@
+// styles/_variables.scss
+// SCSS-переменные для цветов, типографики, сетки, брейкпоинтов и др.
+
+// Цвета
+$color-bg:           #fff !default;
+$color-text:         #222 !default;
+$color-primary:      #1976d2 !default;
+$color-secondary:    #e3e7ed !default;
+$color-error:        #e53935 !default;
+$color-success:      #43a047 !default;
+$color-warning:      #ffd600 !default;
+$color-accent:       #ff4081 !default;
+$color-muted:        #888 !default;
+
+// Типографика
+$font-main:          'Inter', 'Arial', sans-serif !default;
+$font-mono:          'Fira Mono', 'Consolas', monospace !default;
+$font-size-base:     16px !default;
+$line-height-base:   1.5 !default;
+
+// Сетка и контейнеры
+$container-max-width:   1312px !default;
+$container-padding:     16px !default;
+$gutter-desktop:        32px !default;
+$gutter-mobile:         24px !default;
+
+// Grid system (количество колонок)
+$grid-columns-desktop:  12 !default;
+$grid-columns-tablet:   8 !default;
+$grid-columns-mobile:   4 !default;
+
+// Размеры колонок (min-max)
+$col-width-desktop:     60px !default;
+$col-width-desktop-max: 80px !default;
+$col-width-tablet:      56px !default;
+$col-width-tablet-max:  88px !default;
+$col-width-mobile:      56px !default;
+$col-width-mobile-max:  88px !default;
+
+// Брейкпоинты
+$breakpoint-xs:   320px !default;
+$breakpoint-sm:   480px !default;
+$breakpoint-md:   736px !default;
+$breakpoint-lg:   1024px !default;
+$breakpoint-xl:   1200px !default;
+
+// Тени и радиусы
+$radius-base:     6px !default;
+$radius-lg:       12px !default;
+$shadow-base:     0 2px 8px rgba(25, 118, 210, 0.06) !default;
+$shadow-card:     0 2px 12px rgba(25, 118, 210, 0.08) !default;
+
+// Прочие переменные
+$transition-base: 0.2s !default;
+$z-header:        100 !default;
+$z-modal:         200 !default;
+$z-tooltip:       300 !default;
+
+// Экспорт в :root для использования в CSS custom properties
+:root {
+  --color-bg:           #{$color-bg};
+  --color-text:         #{$color-text};
+  --color-primary:      #{$color-primary};
+  --color-secondary:    #{$color-secondary};
+  --color-error:        #{$color-error};
+  --color-success:      #{$color-success};
+  --color-warning:      #{$color-warning};
+  --color-accent:       #{$color-accent};
+  --color-muted:        #{$color-muted};
+
+  --font-main:          #{$font-main};
+  --font-size-base:     #{$font-size-base};
+  --line-height-base:   #{$line-height-base};
+
+  --container-max-width:   #{$container-max-width};
+  --container-padding:     #{$container-padding};
+  --gutter-desktop:        #{$gutter-desktop};
+  --gutter-mobile:         #{$gutter-mobile};
+}
+
+// Краткая навигация:
+// - Цвета: $color-bg, $color-primary, $color-secondary, $color-error, $color-success, $color-warning, $color-accent, $color-muted
+// - Типографика: $font-main, $font-size-base, $line-height-base
+// - Сетка: $container-max-width, $container-padding, $gutter-desktop, $gutter-mobile, $grid-columns-desktop/tablet/mobile
+// - Размеры колонок: $col-width-*, $col-width-*-max
+// - Брейкпоинты: $breakpoint-xs, $breakpoint-sm, $breakpoint-md, $breakpoint-lg, $breakpoint-xl
+// - Тени, радиусы, z-index, transition
+// - Экспорт в :root для использования в JS и CSS custom properties

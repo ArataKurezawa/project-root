@@ -1,0 +1,40 @@
+// styles/main.scss
+// Главный SCSS-файл: импортирует все partials и определяет порядок подключения стилей
+
+// 1. Переменные и миксины (в начале, чтобы были доступны во всех partials)
+@import 'variables';
+@import 'mixins';
+
+// 2. Базовые стили и сброс
+@import 'base';
+
+// 3. Layout и основные компоненты
+@import 'layout';
+@import 'header';
+@import 'footer';
+@import 'sidebar';
+
+// 4. Секции и структура
+@import 'sections';
+
+// 5. Типографика
+@import 'typography';
+
+// 6. UI Kit и компоненты
+@import 'ui';
+
+// 7. Grid (адаптивная сетка)
+@import 'grid';
+
+// 8. Дополнительные стили (если есть)
+// @import 'animations';
+// @import 'forms';
+// @import 'custom';
+
+// Краткая навигация:
+// - Сначала переменные и миксины
+// - Затем базовые стили и layout
+// - После — header, footer, sidebar
+// - Далее — стили секций, типографика, UI-компоненты, сетка
+// - При необходимости — дополнительные partials
+// Все partials должны лежать в папке styles/ и начинаться с "_"

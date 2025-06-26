@@ -1,0 +1,121 @@
+// styles/_sidebar.scss
+// Стили для сайдбара (боковой панели навигации или дополнительного контента)
+
+/*
+  Основные сценарии использования:
+  - Фиксированная или адаптивная боковая панель для навигации по разделам
+  - Может быть скрывающейся (off-canvas) на мобильных устройствах
+  - Содержит список ссылок, иконки, дополнительную информацию
+*/
+
+.sidebar {
+  background: #f5f7fa;
+  color: var(--color-text, #222);
+  width: 260px;
+  min-width: 200px;
+  max-width: 320px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  box-shadow: 2px 0 8px rgba(25, 118, 210, 0.04);
+
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 24px 0;
+
+  @media (max-width: 1023px) {
+    position: static;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    box-shadow: none;
+    padding: 16px 0 12px 0;
+  }
+}
+
+.sidebar__container {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @media (max-width: 1023px) {
+    padding: 0 12px;
+  }
+}
+
+.sidebar__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary, #1976d2);
+  margin-bottom: 1.5em;
+}
+
+.sidebar__nav {
+  flex: 1 1 0;
+}
+
+.sidebar__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar__nav-item {
+  margin: 0;
+}
+
+.sidebar__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text, #222);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.18s;
+
+  &:hover,
+  &:focus {
+    background: #e3e7ed;
+    color: var(--color-primary, #1976d2);
+    text-decoration: none;
+  }
+
+  &.active {
+    background: var(--color-primary, #1976d2);
+    color: #fff;
+  }
+}
+
+// Дополнительный блок (например, для информации или кнопок)
+.sidebar__extra {
+  margin-top: 2em;
+  font-size: 0.98em;
+  color: #888;
+}
+
+// Адаптивность: скрывать/показывать sidebar на мобильных (если нужно)
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+  // Можно добавить off-canvas меню или кнопку для открытия
+}
+
+/*
+  Краткая навигация:
+  - .sidebar — основной контейнер боковой панели
+  - .sidebar__container — внутренний flex-контейнер
+  - .sidebar__title — заголовок сайдбара
+  - .sidebar__nav, .sidebar__nav-list, .sidebar__nav-item, .sidebar__nav-link — навигация
+  - .sidebar__extra — дополнительный блок (например, для информации)
+  - Медиа-запросы для адаптивности (скрытие на мобильных)
+  Для расширения используйте иконки, счетчики, collapse и т.д.
+*/

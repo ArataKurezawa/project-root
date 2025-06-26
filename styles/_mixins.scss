@@ -1,0 +1,124 @@
+// styles/_mixins.scss
+// Общие SCSS-миксины для проекта: брейкпоинты, flex/grid, кнопки, visually-hidden и др.
+
+// 1. Миксины для брейкпоинтов
+$breakpoints: (
+  xs: 320px,
+  sm: 480px,
+  md: 736px,
+  lg: 1024px,
+  xl: 1200px
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// Пример использования:
+// @include respond-to(md) { ... }
+
+// 2. Миксин для центрирования flex
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 3. Миксин для visually-hidden (для доступности)
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  border: 0 !important;
+}
+
+// 4. Миксин для кнопок (основной стиль + модификаторы)
+@mixin button-base($bg: var(--color-primary), $color: #fff) {
+  display: inline-block;
+  padding: 0.75em 2em;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  background: $bg;
+  color: $color;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+  &:hover,
+  &:focus {
+    background: darken($bg, 8%);
+    color: $color;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    text-decoration: none;
+  }
+
+  &:active {
+    background: darken($bg, 16%);
+  }
+
+  &:disabled,
+  &[disabled] {
+    background: #e3e7ed;
+    color: #aaa;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+// 5. Миксин для grid-колонок (адаптивная ширина)
+@mixin grid-col($cols, $total: 12) {
+  width: calc(100% * #{$cols} / #{$total});
+  flex: 0 0 calc(100% * #{$cols} / #{$total});
+  max-width: calc(100% * #{$cols} / #{$total});
+}
+
+// Пример использования:
+// .grid-col--4 { @include grid-col(4, 12); } // 4 из 12 колонок
+
+// 6. Миксин для gap между колонками (gutter)
+@mixin gutter($size) {
+  gap: $size;
+}
+
+// 7. Миксин для обрезки текста (..., ellipsis)
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 8. Миксин для плавного появления (fade-in)
+@mixin fade-in($duration: 0.4s) {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeIn $duration ease forwards;
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/*
+  Краткая навигация:
+  - respond-to — брейкпоинты для медиа-запросов
+  - flex-center — быстрое центрирование flex
+  - visually-hidden — скрытие для доступности
+  - button-base — базовый стиль кнопки
+  - grid-col — сетка колонок (адаптивно)
+  - gutter — gap для flex/grid
+  - text-ellipsis — обрезка текста
+  - fade-in — анимация появления
+  Используйте миксины в partials и компонентах для ускорения верстки.
+*/
